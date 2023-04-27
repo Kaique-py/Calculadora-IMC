@@ -74,25 +74,3 @@ class Interface:
             messagebox.showinfo('Erro', 'Entrada inválida. Lembre de utilizar ponto para separar casas decimais.')
 
 resultado_janela = Interface()
-
-"""
-peso_var = StringVar()
-altura_var = StringVar()
-
-def calculaIMC():
-    peso = peso_var.get()
-    peso = float(peso)
-    altura = altura_var.get()
-    altura = float(altura)
-    imc = float(peso) / (float(altura) * float(altura))
-    return imc
-
-
-janela.title("Calculadora de IMC")
-orientacao_uso = Label(janela, text="Insira os valores do Peso e Altura e, em seguida, clique em Calcular IMC. \n(Utilize ponto ao invés de vírgula para separa casas decimais)")
-orientacao_uso.grid(column=1, row=0)
-botao = Button(janela, text="Calcular IMC", command=calculaIMC)
-botao.grid(column=1, row=2)
-
-janela.mainloop()
-"""
