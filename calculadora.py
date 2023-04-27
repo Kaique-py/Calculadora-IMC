@@ -24,20 +24,21 @@ class Interface:
         self.frame_4 = Frame(self.janela)
         
         #Agora vamos criar um Label para cada Frame (espaço) criado
-        self.label_1 = Label(self.frame_1, text='Peso: (Utilize ponto ao invés de vírgula para separar casas decimais)', background='white', height=5, width=100)
+        self.label_1 = Label(self.frame_1, text='Peso em quilos: (Utilize ponto ao invés de vírgula para separar casas decimais)', background='white', height=5, width=100)
         #Dentro de cada Label eu vou criar os botões ou caixas de texto que eu quiser
         self.peso = Entry(self.frame_1, width=50)
         
-        self.label_2 = Label(self.frame_2, text='Altura: (Utilize ponto ao invés de vírgula para separar casas decimais)', background='white', height=5, width=100)
+        self.label_2 = Label(self.frame_2, text='Altura em metros: (Utilize ponto ao invés de vírgula para separar casas decimais)', background='white', height=5, width=100)
         self.altura = Entry(self.frame_2, width=50)
         
         self.label_3 = Label(self.frame_3, text='Clique aqui para calcular seu IMC', background='white', height=5, width=100)
         #No ultimo Frame eu quero que contenha um botão para o calculo do IMC, que chamará a função.
         self.botao = Button(self.frame_3, text='Calcular IMC', command=self.calculaIMC)
         #Vou criar um botão aqui também para o usuario quitar da aplicação
-        self.botao_sair = Button(self.frame_4, text='Sair', command=self.janela.quit)
-
-        self.label_4 = Label(self.frame_4, text='Seu IMC é de', background='white', height=5, width=100)
+        
+        self.label_4 = Label(self.frame_4, height=1, width=100)
+    
+        self.botao_sair = Button(self.frame_4, text='Sair', command=self.janela.quit)    
         
         #Temos que posicionar esses botoes nos frames e depois na janela principal
         self.botao.pack(side='bottom')
@@ -64,7 +65,13 @@ class Interface:
         mainloop()
     
     def calculaIMC(self):
-        messagebox.showinfo('Seu IMC é:'+ (float(self.peso.get()) / float((self.altura.get()) * float(self.altura.get()))))
+        try:
+            peso = float(self.peso.get())
+            altura = float(self.altura.get())
+            IMC = peso / (altura * altura)
+            messagebox.showinfo('CÁLCULO IMC', 'Seu IMC foi de {:.2f}'. format(IMC))
+        except:
+            messagebox.showinfo('Erro', 'Entrada inválida. Lembre de utilizar ponto para separar casas decimais.')
 
 resultado_janela = Interface()
 
